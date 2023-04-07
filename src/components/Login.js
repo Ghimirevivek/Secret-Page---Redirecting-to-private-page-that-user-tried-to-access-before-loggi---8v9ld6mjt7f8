@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import React, { useState } from 'react'
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
 const Login = ({ setValid }) => {
-  const names = ["mohan", "karan", "rahul"];
-
+  const names = ['mohan', 'karan', 'rahul']
+  const [name, setName] = useState('')
   const onButtonClick = () => {
-    setValid(true);
-  };
+    for (let i of names) {
+      if (i === name) {
+        setValid(true)
+        console.log(name)
+      }
+    }
+  }
   return (
     <div id="login-page">
       <Link id="login-to-start" to="/">
@@ -18,13 +23,13 @@ const Login = ({ setValid }) => {
       </Link>
       <br />
       <h2> Login page</h2>
-      <input id="input" />
+      <input id="input" onChange={(e) => setName(e.target.value)} />
       <Link to="/secretpage">
         <button id="login-button" onClick={onButtonClick}>
           Login
         </button>
       </Link>
     </div>
-  );
-};
-export default Login;
+  )
+}
+export default Login
